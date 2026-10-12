@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2B Zone | Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <a class="logo" href="index.html">2B <span>ZONE.</span></a>
+      <a class="secondary-btn" href="index.html">← Customer Website</a>
+    </header>
+
+    <section id="loginPanel" class="admin-panel admin-login">
+      <span class="eyebrow">RESTRICTED ACCESS</span>
+      <h1>Admin Login</h1>
+      <p class="admin-muted">Sign in to manage 2B Zone bookings.</p>
+
+      <form id="loginForm">
+        <label for="adminPassword">Admin Password</label>
+        <input id="adminPassword" type="password" required
+               autocomplete="current-password">
+        <button class="primary-btn full-btn" type="submit">
+          Sign In ↗
+        </button>
+      </form>
+
+      <p id="loginError" class="admin-muted"></p>
+    </section>
+
+    <div id="dashboard" hidden>
+      <section class="admin-panel">
+        <h2>Booking Requests</h2>
+        <p class="admin-muted">
+          Verify the actual payment in your UPI app before approving a booking.
+          A screenshot alone is not proof of payment.
+        </p>
+
+        <button id="refreshBookings" class="secondary-btn">
+          Refresh Bookings ↻
+        </button>
+
+        <div id="bookingTable" class="admin-table-wrap"></div>
+      </section>
+
+      <section class="admin-panel">
+        <h2>Add a Movie</h2>
+
+        <form id="movieForm" class="admin-form">
+          <input name="title" placeholder="Movie title" required>
+          <input name="genre" placeholder="Genre">
+          <input name="poster" placeholder="Poster image URL (https://...)">
+          <textarea name="description"
+                    placeholder="Movie description"></textarea>
+          <button class="primary-btn" type="submit">
+            Add Movie +
+          </button>
+        </form>
+
+        <p id="movieMessage" class="admin-muted"></p>
+      </section>
+
+      <section class="admin-panel">
+        <h2>Payment and Show Rules</h2>
+        <p class="admin-muted">
+          Ticket price: ₹99. The show threshold is five approved tickets.
+          The show time remains unannounced until the operator confirms it.
+          Maximum: 30 tickets per movie/show.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <div id="adminToast" class="toast" role="status"></div>
+  <script src="admin.js"></script>
+</body>
+</html>
