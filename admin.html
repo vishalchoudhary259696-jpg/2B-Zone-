@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Dashboard | 2B Zone</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <a class="brand" href="./">
+    <span class="logo">2B</span>
+    <span>ZONE<small>ADMIN CONSOLE</small></span>
+  </a>
+  <a class="admin-link" href="./">← Customer website</a>
+</header>
+
+<main class="admin-page">
+  <p class="eyebrow">PRIVATE MANAGEMENT</p>
+  <h1 style="font-family:'Space Grotesk',sans-serif">Admin dashboard</h1>
+  <p class="muted">Verify the actual incoming payment in your UPI app before approving any transaction.</p>
+
+  <section id="login-panel" class="panel">
+    <h2>Admin sign in</h2>
+    <form id="login-form" class="admin-form">
+      <label for="email">Admin email</label>
+      <input id="email" type="email" autocomplete="username" required maxlength="254">
+
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required maxlength="200">
+
+      <button class="btn primary wide">Sign in securely</button>
+      <p id="login-message" class="message" role="status"></p>
+    </form>
+  </section>
+
+  <div id="dashboard" class="hidden">
+    <div class="row-actions" style="margin:18px 0">
+      <button id="refresh" class="btn secondary">Refresh</button>
+      <button id="logout" class="btn secondary">Log out</button>
+    </div>
+
+    <div class="admin-grid">
+      <section class="panel">
+        <h2>Add movie</h2>
+        <form id="movie-form" class="admin-form">
+          <label>Movie title</label>
+          <input name="title" required maxlength="120">
+
+          <label>Description</label>
+          <textarea name="description" required maxlength="1200"></textarea>
+
+          <label>Poster URL (HTTPS recommended)</label>
+          <input name="posterUrl" type="url">
+
+          <label>Language</label>
+          <input name="language" maxlength="60">
+
+          <label>Certificate</label>
+          <input name="certificate" maxlength="20">
+
+          <button class="btn primary wide">Add movie</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Create additional show</h2>
+        <form id="show-form" class="admin-form">
+          <label>Movie</label>
+          <select name="movieId" id="movie-select" required></select>
+
+          <label>Capacity (5–30)</label>
+          <input name="capacity" type="number" min="5" max="30" value="30" required>
+
+          <button class="btn primary wide">Create show</button>
+        </form>
+        <p class="small">Timing remains Coming Soon until at least five paid tickets are verified and the admin confirms a time.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Booking queue</h2>
+        <div id="booking-list">Sign in to load bookings.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Show status</h2>
+        <div id="show-list">Sign in to load shows.</div>
+      </section>
+    </div>
+
+    <p id="dashboard-message" class="message" role="status"></p>
+  </div>
+</main>
+
+<footer><p>2B Zone · Admin area · Keep your password private.</p></footer>
+</body>
+</html>
