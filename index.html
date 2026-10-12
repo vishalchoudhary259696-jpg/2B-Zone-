@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090c">
+  <title>2B Zone | Movie Tickets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="#">2B <span>ZONE.</span></a>
+    <nav>
+      <a href="#movies">Movies</a>
+      <a href="#how">How It Works</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+    <a class="nav-btn" href="#movies">Book Now ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content reveal">
+        <span class="eyebrow">YOUR CINEMA EXPERIENCE STARTS HERE</span>
+        <h1>Big Movies.<br><span>Small Prices.</span></h1>
+        <p>Your next favourite movie is waiting. Choose a film, reserve your tickets and pay securely through your UPI app.</p>
+        <a class="primary-btn" href="#movies">Explore Movies ↘</a>
+        <div class="hero-features">
+          <span>✦ Easy Booking</span>
+          <span>✦ UPI Payment</span>
+          <span>✦ ₹99 Per Ticket</span>
+        </div>
+      </div>
+      <div class="hero-image reveal">
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=900&q=85" alt="Cinema seats">
+        <div class="floating-price">
+          <small>YOUR MOVIE TICKET</small>
+          <strong>₹99</strong>
+          <span>2B ZONE CINEMA</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker">
+      <div>GOOD FILMS ✦ GREAT COMPANY ✦ ₹99 TICKETS ✦ YOUR KIND OF CINEMA ✦ GOOD FILMS ✦ GREAT COMPANY ✦</div>
+    </div>
+
+    <section class="section" id="movies">
+      <div class="section-heading reveal">
+        <div>
+          <span class="eyebrow">THE MOVIE LINE-UP</span>
+          <h2>Choose Your <span>Next Story.</span></h2>
+        </div>
+        <p>Every great show starts with five confirmed tickets.</p>
+      </div>
+
+      <div id="movieGrid" class="movie-grid">
+        <p>Loading movies...</p>
+      </div>
+      <p class="disclaimer">Movie posters shown are placeholders. Replace them with artwork you have permission to use.</p>
+    </section>
+
+    <section class="section how-section" id="how">
+      <span class="eyebrow">SIMPLE. QUICK. CONVENIENT.</span>
+      <h2>Three Steps to <span>Showtime.</span></h2>
+      <div class="steps">
+        <article class="step reveal">
+          <span class="step-no">01</span>
+          <h3>🎬 Choose a Movie</h3>
+          <p>Select a movie and choose the number of tickets you want.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step-no">02</span>
+          <h3>↗ Pay Using UPI</h3>
+          <p>Pay ₹99 per ticket using your preferred UPI app.</p>
+        </article>
+        <article class="step reveal">
+          <span class="step-no">03</span>
+          <h3>⭐ Get Confirmed</h3>
+          <p>We verify your payment. Show timing will be announced after the minimum five tickets are confirmed.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bottom-cta reveal">
+      <div>
+        <span class="eyebrow">READY FOR THE BIG SCREEN?</span>
+        <h2>Your next movie night<br>starts at <span>2B Zone.</span></h2>
+      </div>
+      <a class="dark-btn" href="#movies">Find a Movie ↗</a>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="#">2B <span>ZONE.</span></a>
+    <p>© <span id="year"></span> 2B Zone. All rights reserved.</p>
+    <a href="admin.html">Admin Login</a>
+  </footer>
+
+  <dialog id="bookingDialog">
+    <button id="closeDialog" class="close-btn" type="button">×</button>
+
+    <div id="bookingFormView">
+      <span class="eyebrow">RESERVE YOUR TICKETS</span>
+      <h2 id="dialogMovieTitle">Book a Movie</h2>
+      <p class="muted">₹99 per ticket. Your booking remains pending until payment is verified.</p>
+
+      <form id="bookingForm">
+        <input type="hidden" id="movieId">
+
+        <label for="customerName">Full Name</label>
+        <input id="customerName" required minlength="2" maxlength="70" placeholder="Enter your name">
+
+        <label for="customerMobile">Mobile Number</label>
+        <input id="customerMobile" required inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" placeholder="10-digit mobile number">
+
+        <label for="ticketCount">Number of Tickets</label>
+        <select id="ticketCount">
+          <option value="1">1 Ticket — ₹99</option>
+          <option value="2">2 Tickets — ₹198</option>
+          <option value="3">3 Tickets — ₹297</option>
+          <option value="4">4 Tickets — ₹396</option>
+          <option value="5">5 Tickets — ₹495</option>
+        </select>
+
+        <div class="total-row">
+          <span>Total Amount</span>
+          <strong id="totalAmount">₹99</strong>
+        </div>
+
+        <button class="primary-btn full-btn" type="submit">Continue to Payment ↗</button>
+      </form>
+      <p class="small-note">Never share your UPI PIN or OTP with anyone.</p>
+    </div>
+
+    <div id="paymentView" hidden>
+      <span class="eyebrow">PAYMENT DETAILS</span>
+      <h2>Complete Your Payment</h2>
+      <p id="paymentInstructions" class="muted"></p>
+
+      <div class="payment-card">
+        <small>PAY TO</small>
+        <strong id="payeeName">2B Zone</strong>
+        <span id="upiIdText">your-upi-id@bank</span>
+        <h2 id="payTotal">₹99</h2>
+      </div>
+
+      <a id="payNowLink" class="primary-btn full-btn" href="#">Open UPI App ↗</a>
+
+      <p class="small-note">Keep your booking ID. Payment must be verified in the UPI app before tickets are confirmed.</p>
+      <p><strong>Booking ID:</strong> <span id="bookingIdText"></span></p>
+      <button id="copyBookingId" class="secondary-btn" type="button">Copy Booking ID</button>
+      <button id="finishPayment" class="secondary-btn full-btn" type="button">I've Made the Payment</button>
+    </div>
+
+    <div id="bookingDone" hidden>
+      <h2>Booking Request Saved ✓</h2>
+      <p id="doneMessage" class="muted"></p>
+      <button id="doneClose" class="primary-btn full-btn" type="button">Done</button>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+  </html>
+  
