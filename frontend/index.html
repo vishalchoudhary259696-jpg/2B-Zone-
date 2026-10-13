@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080914">
+  <title>2B Zone — Your Movie Experience</title>
+  <meta name="description" content="Discover movies and explore showtimes at 2B Zone.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js"></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="2B Zone home">
+      <span class="brand-mark">2B</span>
+      <span class="brand-text">ZONE<span>.</span><small>CINEMA EXPERIENCE</small></span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#trending">Trending</a>
+      <a href="#latest">Latest</a>
+      <a href="#booking">Tickets</a>
+    </nav>
+
+    <a href="#booking" class="header-cta">Book now <span>↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow"><span class="status-dot"></span> THE MOVIE NIGHT STARTS HERE</p>
+        <h1>Escape into<br>another <span>world.</span></h1>
+
+        <p class="hero-description">
+          The stories you love. The moments you remember.
+          Find a film and make your next movie night special.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#trending">Explore movies <span>→</span></a>
+          <a class="button button-glass" href="#booking">Choose a showtime</a>
+        </div>
+
+        <div class="hero-bottom">
+          <span class="hero-line"></span>
+          <span>YOUR SEAT. YOUR STORY. YOUR NIGHT.</span>
+        </div>
+      </div>
+
+      <div class="hero-tag reveal">
+        <span class="tag-icon">✦</span>
+        <span><small>WELCOME TO</small><strong>2B ZONE</strong></span>
+      </div>
+
+      <a class="scroll-cue" href="#trending" aria-label="Scroll to movies">
+        <span></span> SCROLL TO DISCOVER
+      </a>
+    </section>
+
+    <section class="quick-info reveal">
+      <div><span class="info-symbol">₹</span><p><strong>₹99</strong><small>Per ticket</small></p></div>
+      <div><span class="info-symbol">✦</span><p><strong>Movie nights</strong><small>Made memorable</small></p></div>
+      <div><span class="info-symbol">▶</span><p><strong>Your choice</strong><small>Your big-screen story</small></p></div>
+    </section>
+
+    <section class="movie-section" id="trending">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">THE AUDIENCE IS TALKING</p>
+          <h2>Trending <span>now.</span></h2>
+          <p>Popular films to add to your watchlist.</p>
+        </div>
+        <span class="section-index">01 / DISCOVER</span>
+      </div>
+
+      <div id="trendingMovies" class="movie-grid">
+        <p class="loading-message">Loading trending movies…</p>
+      </div>
+    </section>
+
+    <section class="movie-section latest-section" id="latest">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">FRESH STORIES, NEW RELEASES</p>
+          <h2>Now showing <span>.</span></h2>
+          <p>Explore the latest films in the catalogue.</p>
+        </div>
+        <span class="section-index">02 / WATCH</span>
+      </div>
+
+      <div id="latestMovies" class="movie-grid">
+        <p class="loading-message">Loading movies…</p>
+      </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+      <div class="booking-copy reveal">
+        <p class="eyebrow">YOUR NEXT PLAN IS A MOVIE</p>
+        <h2>Pick the film.<br><span>Set the mood.</span></h2>
+        <p>Choose a movie and preferred showtime to begin.</p>
+        <div class="booking-decoration">2B <span>ZONE</span></div>
+      </div>
+
+      <div class="booking-panel reveal">
+        <div class="panel-heading">
+          <span class="panel-icon">▶</span>
+          <div><strong>Plan your visit</strong><small>Choose your movie and time</small></div>
+        </div>
+
+        <label for="movieSelect">Select movie</label>
+        <select id="movieSelect">
+          <option value="">Choose a movie</option>
+        </select>
+
+        <label for="showtimeSelect">Preferred showtime</label>
+        <select id="showtimeSelect">
+          <option value="">Choose a time</option>
+          <option value="09:00">9:00 AM</option>
+          <option value="12:00">12:00 PM</option>
+          <option value="15:00">3:00 PM</option>
+          <option value="18:00">6:00 PM</option>
+        </select>
+
+        <div class="price-row">
+          <span>Ticket price</span>
+          <strong>₹99 <small>/ person</small></strong>
+        </div>
+
+        <button class="button button-primary booking-button" id="bookButton">
+          Continue <span>→</span>
+        </button>
+
+        <p id="bookingMessage" class="booking-message" role="status">
+          Select a movie and time to continue.
+        </p>
+        <p class="fine-print">Showtimes are examples until confirmed by the booking system.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#home">
+      <span class="brand-mark">2B</span>
+      <span class="brand-text">ZONE<span>.</span><small>CINEMA EXPERIENCE</small></span>
+    </a>
+    <p>Good films. Great company. Unforgettable nights.</p>
+    <a class="back-top" href="#home">Back to top ↑</a>
+    <small class="copyright">© <span id="currentYear">2026</span> 2B Zone</small>
+  </footer>
+</body>
+</html>
