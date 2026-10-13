@@ -4,21 +4,40 @@
    ========================================================= */
 
 /* ---------- Theme variables ---------- */
-:root{
-  --bg:#0E0C0A;
-  --surface:#1A1714;
-  --surface-2:#241F1A;
-  --line:rgba(245,185,66,.22);
-  --gold:#F5B942;
-  --gold-soft:#FFD98A;
-  --coral:#E8553D;
-  --text:#F5EFE6;
-  --muted:#B8AE9F;
-  --glass:rgba(22,19,16,.62);
-  --glass-strong:rgba(20,17,14,.82);
-  --radius:20px;
-  --shadow:0 20px 50px -20px rgba(0,0,0,.9);
-}
+  :root{
+    --bg: #09090b; /* Deeper black */
+    --surface: #121217;
+    --surface-2: #1c1c24;
+    --line: rgba(0, 229, 255, 0.15);
+    /* Swapped Gold/Coral for Cyan/Purple Esports vibe */
+    --gold: #00e5ff; 
+    --gold-soft: #80f2ff;
+    --coral: #8a2be2; 
+    --text: #F5EFE6;
+    --muted: #8b8b9e;
+    --glass: rgba(18, 18, 23, 0.62);
+    --glass-strong: rgba(12, 12, 16, 0.82);
+    --radius: 20px;
+    --shadow: 0 20px 50px -20px rgba(0,0,0,.9);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--text);
+    background-color:var(--bg);
+    /* Removed the AI SVG background and replaced it with a premium tech grid + subtle purple top glow */
+    background-image: 
+        radial-gradient(circle at 50% 0%, rgba(138, 43, 226, 0.12), transparent 60%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 30px 30px, 30px 30px;
+    background-attachment:fixed;
+    line-height:1.6;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+
 
 /* ---------- Base ---------- */
 *{box-sizing:border-box;margin:0;padding:0}
