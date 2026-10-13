@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2B Zone - Cinema & Gaming</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Header -->
+        <header class="header fade-in">
+            <div class="logo-box">2B</div>
+            <div class="brand-info">
+                <h1>Zone</h1>
+                <p>Gaming cafe and cinema</p>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero fade-in delay-1">
+            <h2>Experience the thrill.<br>Live the game.</h2>
+            <p>Your ultimate destination for premium cinema and high-end gaming. Book your seats or reserve your console now.</p>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="fade-in delay-2">
+            <a href="#movies" class="btn btn-primary">Explore Movies</a>
+            <a href="games.html" class="btn btn-secondary">Explore Games</a>
+        </div>
+
+        <!-- Cinematic Image Section -->
+        <div class="cinematic-wrapper fade-in delay-3">
+            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Cinematic theatre room">
+            <div class="overlay-text">OUR SCREEN</div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>₹99</h3>
+                <p>per ticket</p>
+            </div>
+            <div class="stat-item">
+                <h3>5</h3>
+                <p>tickets to open a<br>show</p>
+            </div>
+            <div class="stat-item">
+                <h3>30</h3>
+                <p>seats per show</p>
+            </div>
+        </div>
+
+        <!-- Movie Listings -->
+        <section id="movies">
+            <h2 class="section-title">Showing and coming soon</h2>
+            <p class="section-subtitle">Pick a film and book your seats.</p>
+
+            <!-- Ticket 1 -->
+            <div class="ticket-card">
+                <div class="ticket-left">
+                    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&w=200&q=80" alt="Action Movie">
+                    <div class="movie-info">
+                        <div class="status-text">Now showing</div>
+                        <div class="movie-title">Prahaar</div>
+                        <div class="movie-details">
+                            <p>Next show</p>
+                            <strong>12:00 PM, 30 seats left</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-right">
+                    <div class="ticket-price-label">₹99 a ticket</div>
+                    <button class="btn-book" onclick="openMovieBooking('Prahaar')">Book now</button>
+                </div>
+            </div>
+
+            <!-- Ticket 2 -->
+            <div class="ticket-card">
+                <div class="ticket-left">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=200&q=80" alt="Drama Movie">
+                    <div class="movie-info">
+                        <div class="status-text">Coming soon</div>
+                        <div class="movie-title">Ranabaali</div>
+                        <div class="movie-details">
+                            <p>Language</p>
+                            <strong>Telugu</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-right">
+                    <div class="ticket-price-label">₹99 a ticket</div>
+                    <button class="btn-book" onclick="openMovieBooking('Ranabaali')">Book now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call Button Moved to Bottom -->
+        <div class="bottom-cta">
+            <h2 class="section-title">Need Help?</h2>
+            <p class="section-subtitle">Reach out to us directly.</p>
+            <a href="tel:+919876543210" class="btn btn-outline">📞 Call +91 98765 43210</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-section">
+            <div class="footer-brand">
+                <h2 class="footer-title">2B Zone</h2>
+                <p>Gaming cafe and cinema.</p>
+                <p class="footer-contact">Sonipat · hello@2bzone.com</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 2B Zone, Sonipat.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Movie Booking Modal -->
+    <div class="modal-overlay" id="movie-modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('movie-modal')">×</button>
+            <h2 id="modal-movie-title" class="modal-title">Book Ticket</h2>
+            
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="movie-date" required>
+            </div>
+            <div class="form-group">
+                <label>Tickets (Price locks automatically)</label>
+                <input type="number" id="movie-qty" value="1" min="1" max="10" oninput="updateMoviePrice()">
+            </div>
+            <div class="form-group">
+                <label>Your name</label>
+                <input type="text" id="movie-name" required>
+            </div>
+            <div class="form-group">
+                <label>Mobile number</label>
+                <input type="tel" id="movie-phone" required>
+            </div>
+            
+            <div class="payment-box">
+                <div class="payment-box-header">
+                    <span>Total Amount</span>
+                    <span class="total-price" id="movie-total">₹99</span>
+                </div>
+                <div class="upi-info">
+                    <span>Pay to UPI ID: <strong>2bzone@upi</strong></span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Payment Reference (UTR/Txn ID)</label>
+                <input type="text" id="movie-ref" placeholder="Enter reference number">
+            </div>
+
+            <button class="btn btn-primary" onclick="initiatePayment('movie')">Pay Now (Opens UPI App)</button>
+            <button class="btn btn-whatsapp" onclick="submitMovieBooking()">Confirm & Send on WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
