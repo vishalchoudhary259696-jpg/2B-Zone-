@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2B Zone | Gaming Cafe & Cinema</title>
+<meta name="description" content="2B Zone is a gaming cafe and cinema. Book a movie for ₹99 a ticket.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=2">
+</head>
+<body>
+
+<!-- Welcome intro -->
+<div class="welcome" id="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-line"></div>
+    <h1 class="welcome-text">
+      <span style="--i:0">Welcome</span>
+      <span style="--i:1">to</span>
+      <span style="--i:2">2B</span>
+      <span style="--i:3">Zone</span>
+    </h1>
+    <p class="welcome-sub">Gaming · Movies · Fun</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <header class="brand">
+    <div class="logo">2B</div>
+    <div>
+      <div class="brand-name">Zone</div>
+      <div class="brand-sub">Gaming cafe and cinema</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Movies by day. Games by night.</h1>
+    <p>Book a show for ₹99 a ticket and pay instantly via UPI. A show opens once five tickets are paid.</p>
+    <div class="hero-actions">
+      <button class="btn btn-orange" id="exploreMovies">Explore Movies</button>
+      <a class="btn btn-dark" href="games.html">Explore Games</a>
+      <a class="btn btn-outline" href="tel:+919876543210">Call +91 98765 43210</a>
+    </div>
+  </section>
+
+  <figure class="cinema reveal">
+    <img class="cinema-img" src="PASTE_CINEMA_IMAGE_URL_HERE" alt="Small cinema theatre with a glowing screen" onerror="this.remove()">
+    <figcaption class="cinema-label">Our screen</figcaption>
+  </figure>
+
+  <div class="stats reveal">
+    <div>
+      <div class="stat-num">₹99</div>
+      <div class="stat-label">per ticket</div>
+    </div>
+    <div>
+      <div class="stat-num">5</div>
+      <div class="stat-label">tickets to open a show</div>
+    </div>
+    <div>
+      <div class="stat-num">30</div>
+      <div class="stat-label">seats per show</div>
+    </div>
+  </div>
+
+  <section class="section reveal" id="showing">
+    <h2>Showing and coming soon</h2>
+    <p class="lead">Pick a film and book your seats.</p>
+    <div class="stage" id="stage"></div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <nav class="social reveal">
+    <a class="btn-social" href="https://wa.me/919876543210" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn-social" href="https://www.instagram.com/2bzone" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn-social" href="https://mail.google.com/mail/?view=cm&to=hello@2bzone.com" target="_blank" rel="noopener">Gmail</a>
+  </nav>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Contact</a>
+  </div>
+  <small>© 2026 2B Zone Private Limited. All rights reserved.</small>
+  <small>Gaming cafe and cinema</small>
+</footer>
+
+<!-- Booking sheet -->
+<div class="overlay" id="overlay">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="sheet-head">
+      <h3 id="sheetTitle">Book seats</h3>
+      <button class="close" id="closeBtn" aria-label="Close">×</button>
+    </div>
+
+    <label for="showSel">Show</label>
+    <select id="showSel" class="field"></select>
+
+    <label for="dateIn">Date</label>
+    <input id="dateIn" type="date" class="field">
+
+    <label>Tickets</label>
+    <div class="qty">
+      <button type="button" id="minus" aria-label="Fewer tickets">−</button>
+      <input id="qtyIn" class="field" value="1" readonly>
+      <button type="button" id="plus" aria-label="More tickets">+</button>
+    </div>
+
+    <label for="nameIn">Your name</label>
+    <input id="nameIn" class="field" type="text" placeholder="Full name" autocomplete="name">
+
+    <label for="phoneIn">Mobile number</label>
+    <input id="phoneIn" class="field" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number">
+
+    <div class="summary">
+      <div class="sum-row"><span>Film</span><span id="sumFilm">-</span></div>
+      <div class="sum-row"><span>Show</span><span id="sumShow">-</span></div>
+      <div class="sum-row"><span>Date</span><span id="sumDate">-</span></div>
+      <div class="sum-row"><span>Tickets</span><span id="sumTickets">1</span></div>
+      <div class="sum-row"><span>Pay to UPI ID</span><span id="sumUpi">-</span></div>
+      <div class="sum-row sum-total"><span>Total</span><span id="sumTotal">₹99</span></div>
+    </div>
+
+    <p class="pay-label">Pay <span id="payAmt">₹99</span> with</p>
+    <div class="pay-apps">
+      <button class="pay-app" data-app="gpay"><span class="app-badge">G</span>Google Pay</button>
+      <button class="pay-app" data-app="phonepe"><span class="app-badge">Pe</span>PhonePe</button>
+      <button class="pay-app" data-app="paytm"><span class="app-badge">P</span>Paytm</button>
+      <button class="pay-app" data-app="upi"><span class="app-badge">UPI</span>Any UPI app</button>
+    </div>
+
+    <div class="msg" id="msg"></div>
+    <p class="note">Your UPI app opens with the payee and amount filled in. The amount is fixed at ₹99 per ticket.</p>
+  </div>
+</div>
+
+<script src="js/ticket-animation.js?v=2"></script>
+<script src="js/movies.js?v=2"></script>
+<script src="js/main.js?v=2"></script>
+</body>
+</html>
