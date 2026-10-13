@@ -1,0 +1,48 @@
+{
+  "films": [
+    {
+      "id": "drishyam-conclusion",
+      "title": "Drishyam: The Conclusion",
+      "status": "Now Showing",
+      "language": "Hindi",
+      "genre": "Crime thriller",
+      "cast": "Ajay Devgn, Tabu, Jaideep Ahlawat",
+      "synopsis": "Vijay Salgaonkar and his family come under pressure again when SP Rajveer Singh Tomar enters the story. The final chapter of the Drishyam series.",
+      "poster": "images/posters/drishyam-conclusion.jpg",
+      "shows": []
+    },
+    {
+      "id": "jailer-2",
+      "title": "Jailer 2",
+      "status": "Coming Soon",
+      "language": "Tamil",
+      "genre": "Action drama",
+      "cast": "Rajinikanth",
+      "synopsis": "Rajinikanth returns in the sequel to the hit film Jailer. Releasing 15 October 2026.",
+      "poster": "images/posters/jailer-2.jpg",
+      "shows": []
+    },
+    {
+      "id": "prahaar",
+      "title": "Prahaar",
+      "status": "Coming Soon",
+      "language": "Hindi",
+      "genre": "Drama",
+      "cast": "Rajkummar Rao",
+      "synopsis": "Rajkummar Rao's Hindi film on the untold story of Ujjwal Nikam. Releasing 16 October 2026.",
+      "poster": "images/posters/prahaar.jpg",
+      "shows": []
+    },
+    {
+      "id": "ranabaali",
+      "title": "Ranabaali",
+      "status": "Coming Soon",
+      "language": "Telugu",
+      "genre": "Period action drama",
+      "cast": "Vijay Deverakonda, Rashmika Mandanna",
+      "synopsis": "A period action drama set in 1870s South India during the great famine. Releasing 16 October 2026.",
+      "poster": "images/posters/ranabaali.jpg",
+      "shows": []
+    }
+  ]
+}
