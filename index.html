@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2B Zone, Gaming Cafe and Cinema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ticket:#E9E3D3;--night:#17201C;--ember:#F0531C;--ember-deep:#D9430F;--dust:#5F5A4E;--stub-text:#CFC8B8;--paper:#FFFBF3;--rule:#9E967F}
+*{box-sizing:border-box;margin:0}
+html{background:var(--ticket)}
+body{color:var(--night);font:400 17px/1.55 Figtree,system-ui,sans-serif;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);-webkit-font-smoothing:antialiased}
+h1,h2,h3,.mark,.brand b,.stats b,.total{font-family:Unbounded,system-ui,sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.08}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--night);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;gap:12px;padding:20px 0}
+.mark{width:44px;height:44px;border-radius:4px;background:var(--night);color:var(--ticket);display:grid;place-items:center;font-size:15px}
+.brand b{display:block;font-size:18px}
+.brand span{font-size:14px;color:var(--dust)}
+.hero{padding:40px 0 44px}
+h1{font-size:clamp(36px,9vw,64px);max-width:13ch}
+.lede{margin:22px 0 30px;max-width:42ch;color:#33403A;font-size:18px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 22px;border-radius:4px;border:2px solid var(--night);background:transparent;color:var(--night);font:600 16px Figtree,sans-serif;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--night);color:var(--ticket)}
+.btn-ember{background:var(--ember);border-color:var(--ember);color:#fff}
+.btn-ember:hover{background:var(--ember-deep);border-color:var(--ember-deep);color:#fff}
+.wide{width:100%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;padding-top:18px;border-top:2px solid var(--night)}
+.stats b{display:block;font-size:clamp(24px,6vw,34px)}
+.stats span{display:block;margin-top:4px;font-size:14px;line-height:1.35;color:var(--dust)}
+.films{padding:20px 0 64px}
+h2{font-size:clamp(24px,6vw,34px);margin-bottom:6px}
+.films>p{color:var(--dust)}
+.stub{display:grid;grid-template-columns:1fr 128px;margin-top:24px;position:relative}
+.stub::before,.stub::after{content:"";position:absolute;right:117px;width:22px;height:22px;border-radius:50%;background:var(--ticket)}
+.stub::before{top:-11px}
+.stub::after{bottom:-11px}
+.stub-main{background:var(--night);color:var(--ticket);padding:24px;border-radius:6px 0 0 6px}
+.stub-side{background:var(--night);color:var(--ticket);padding:24px 16px;border-left:2px dashed rgba(233,227,211,.35);border-radius:0 6px 6px 0;display:flex;flex-direction:column;justify-content:space-between;gap:20px}
+.stub-side .btn{width:100%;min-height:44px;padding:0 10px;font-size:15px;background:var(--ember);border-color:var(--ember);color:#fff}
+.stub-side .btn:hover{background:var(--ember-deep);border-color:var(--ember-deep)}
+.stub-side .label{font-size:14px;color:var(--stub-text)}
+.tag{font-size:14px;color:#FF8A5C}
+.stub h3{font-size:26px;margin:6px 0 16px}
+.stub dl{display:grid;gap:12px}
+.stub dt{font-size:13px;color:var(--stub-text)}
+.stub dd{font-size:16px}
+footer{border-top:2px solid var(--night);padding:22px 0 36px;font-size:14px;color:var(--dust)}
+dialog{border:0;border-radius:8px;padding:0;width:min(460px,calc(100% - 24px));max-height:calc(100dvh - 24px);background:var(--ticket);color:var(--night)}
+dialog::backdrop{background:rgba(23,32,28,.72)}
+form{padding:24px;display:grid;gap:14px}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sheet-head h2{font-size:24px}
+.x{width:40px;height:40px;flex:none;border:2px solid var(--night);border-radius:4px;background:none;color:var(--night);font-size:20px;cursor:pointer}
+.note{margin-top:-4px;font-size:15px;color:var(--dust)}
+label{display:grid;gap:6px;font-size:14px;font-weight:600}
+input,select{width:100%;min-height:46px;padding:12px;font:400 16px Figtree,sans-serif;color:var(--night);background:var(--paper);border:1.5px solid var(--rule);border-radius:4px}
+input:focus,select:focus{outline:3px solid var(--ember);outline-offset:1px;border-color:var(--ember)}
+.pay{display:grid;gap:10px;padding:16px;border:1.5px dashed var(--dust);border-radius:6px;font-size:15px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.total{font-size:22px;color:var(--ember-deep)}
+.small{min-height:36px;padding:0 12px;font-size:14px;border:2px solid var(--night);border-radius:4px;background:transparent;color:var(--night);cursor:pointer}
+.fine{min-height:1.4em;font-size:14px;color:var(--dust)}
+@media (max-width:420px){.stats{gap:10px}.stub{grid-template-columns:1fr 116px}.stub::before,.stub::after{right:105px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="mark">2B</div>
+    <div class="brand"><b>Zone</b><span>Gaming cafe and cinema</span></div>
+  </header>
+
+  <section class="hero">
+    <h1>Watch the film. Then play the next round.</h1>
+    <p class="lede">Book a show for ₹99 a ticket, pay by UPI and send your booking on WhatsApp. A show opens once five tickets are paid.</p>
+    <div class="actions">
+      <a class="btn btn-ember" href="#films">See what is showing</a>
+      <a class="btn" href="tel:+919999999999">+91 99999 99999</a>
+    </div>
+    <div class="stats">
+      <div><b>₹99</b><span>per ticket</span></div>
+      <div><b>5</b><span>tickets to open a show</span></div>
+      <div><b>30</b><span>seats per show</span></div>
+    </div>
+  </section>
+
+  <section class="films" id="films">
+    <h2>Showing and coming soon</h2>
+    <p>Pick a film and book your seats.</p>
+
+    <article class="stub">
+      <div class="stub-main">
+        <span class="tag">Now showing</span>
+        <h3>Prahaar</h3>
+        <dl><div><dt>Next show</dt><dd>12:00 PM, 27 seats left</dd></div></dl>
+      </div>
+      <div class="stub-side">
+        <span class="label">₹99 a ticket</span>
+        <button class="btn" type="button" data-book="Prahaar">Book now</button>
+      </div>
+    </article>
+
+    <article class="stub">
+      <div class="stub-main">
+        <span class="tag">Coming soon</span>
+        <h3>Ranabaali</h3>
+        <dl>
+          <div><dt>Language</dt><dd>Telugu</dd></div>
+          <div><dt>Genre</dt><dd>Period action drama</dd></div>
+          <div><dt>Cast</dt><dd>Vijay Deverakonda, Rashmika Mandanna</dd></div>
+        </dl>
+      </div>
+      <div class="stub-side">
+        <span class="label">₹99 a ticket</span>
+        <button class="btn" type="button" data-book="Ranabaali">Book now</button>
+      </div>
+    </article>
+  </section>
+
+  <footer>2B Zone, gaming cafe and screening room. Bookings on WhatsApp.</footer>
+</div>
+
+<dialog id="book" aria-labelledby="bk-title">
+  <form id="form">
+    <div class="sheet-head">
+      <h2 id="bk-title">Book your tickets</h2>
+      <button type="button" class="x" aria-label="Close">×</button>
+    </div>
+    <p class="note">₹99 per ticket. Pay by UPI, then enter your payment reference. A show unlocks after 5 paid tickets.</p>
+    <label>Movie
+      <select name="movie"><option>Prahaar</option><option>Ranabaali</option></select>
+    </label>
+    <label>Show time
+      <select name="time"><option value="12:00 PM">12:00 PM (27 seats left)</option></select>
+    </label>
+    <label>Date
+      <input type="date" name="date" required>
+    </label>
+    <label>Tickets
+      <input type="number" name="tickets" min="1" max="10" value="1" required>
+    </label>
+    <label>Your name
+      <input name="guest" autocomplete="name" required>
+    </label>
+    <label>Mobile number
+      <input name="phone" type="tel" autocomplete="tel" required>
+    </label>
+    <div class="pay">
+      <div class="row"><span>Total</span><span class="total" id="total">₹99</span></div>
+      <div class="row"><span>Pay to UPI ID <b>2bzone@upi</b></span><button type="button" class="small" id="copy">Copy</button></div>
+    </div>
+    <label>Payment reference
+      <input name="ref" required>
+    </label>
+    <button class="btn btn-ember wide" type="submit">Send booking on WhatsApp</button>
+    <p class="fine" id="msg"></p>
+  </form>
+</dialog>
+
+<script>
+const PRICE = 99;
+const PHONE = '919999999999'; // replace with the cafe's WhatsApp number
+const dlg = document.getElementById('book');
+const f = document.getElementById('form');
+
+const today = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); };
+const qty = () => Math.min(10, Math.max(1, parseInt(f.tickets.value, 10) || 1));
+const total = () => { document.getElementById('total').textContent = '₹' + qty() * PRICE; };
+
+function openBook(movie) {
+  f.reset();
+  f.movie.value = movie;
+  f.date.min = today();
+  f.date.value = today();
+  f.tickets.value = 1;
+  document.getElementById('msg').textContent = '';
+  total();
+  dlg.showModal();
+  f.guest.focus();
+}
+
+document.querySelectorAll('[data-book]').forEach(b => b.addEventListener('click', () => openBook(b.dataset.book)));
+f.tickets.addEventListener('input', total);
+document.querySelector('.x').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+document.getElementById('copy').addEventListener('click', async e => {
+  try { await navigator.clipboard.writeText('2bzone@upi'); e.target.textContent = 'Copied'; }
+  catch (_) { e.target.textContent = '2bzone@upi'; }
+});
+
+f.addEventListener('submit', e => {
+  e.preventDefault();
+  const d = new FormData(f), n = qty();
+  const text = `Booking request\nMovie: ${d.get('movie')}\nShow: ${d.get('time')}\nDate: ${d.get('date')}\nTickets: ${n} (₹${n * PRICE})\nName: ${d.get('guest')}\nMobile: ${d.get('phone')}\nPayment ref: ${d.get('ref')}`;
+  window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+  document.getElementById('msg').textContent = 'Opening WhatsApp. Send the message to confirm your seats.';
+});
+</script>
+</body>
+</html>
