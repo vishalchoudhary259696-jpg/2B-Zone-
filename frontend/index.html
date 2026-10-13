@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2B Zone | Cinema Experience</title>
+<meta name="description" content="2B Zone: book movie tickets and showtimes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Changed Poppins to Oswald (Headings/UI) and Inter (Body) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0E0C0A;
+    --surface:#1A1714;
+    --surface-2:#241F1A;
+    --line:rgba(245,185,66,.22);
+    --gold:#F5B942;
+    --gold-soft:#FFD98A;
+    --coral:#E8553D;
+    --text:#F5EFE6;
+    --muted:#B8AE9F;
+    --glass:rgba(22,19,16,.62);
+    --glass-strong:rgba(20,17,14,.82);
+    --radius:20px;
+    --shadow:0 20px 50px -20px rgba(0,0,0,.9);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    /* Applied Inter for clean body font */
+    font-family:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--text);
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(180deg,rgba(14,12,10,.25) 0%,rgba(14,12,10,.6) 45%,rgba(14,12,10,.92) 100%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%231B130D'/%3E%3Cstop offset='1' stop-color='%23070605'/%3E%3C/linearGradient%3E%3CradialGradient id='glow' cx='960' cy='0' r='1000' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0' stop-color='%23F5B942' stop-opacity='.55'/%3E%3Cstop offset='.5' stop-color='%23E8553D' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23E8553D' stop-opacity='0'/%3E%3C/radialGradient%3E%3ClinearGradient id='beam' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE3A3' stop-opacity='.45'/%3E%3Cstop offset='1' stop-color='%23FFE3A3' stop-opacity='0'/%3E%3C/linearGradient%3E%3ClinearGradient id='fadeIn' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230A0908' stop-opacity='1'/%3E%3Cstop offset='1' stop-color='%230A0908' stop-opacity='0'/%3E%3C/linearGradient%3E%3Cpattern id='seats' width='130' height='100' patternUnits='userSpaceOnUse'%3E%3Crect x='20' y='4' width='90' height='58' rx='26' fill='%237E2016'/%3E%3Crect x='6' y='36' width='22' height='42' rx='9' fill='%234E120B'/%3E%3Crect x='102' y='36' width='22' height='42' rx='9' fill='%234E120B'/%3E%3Crect x='26' y='52' width='78' height='32' rx='14' fill='%23A8301F'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='1920' height='1080' fill='url(%23sky)'/%3E%3Crect width='1920' height='1080' fill='url(%23glow)'/%3E%3Cpolygon points='960,0 380,1080 1540,1080' fill='url(%23beam)' opacity='.55'/%3E%3Cpolygon points='940,0 700,1080 980,1080' fill='url(%23beam)' opacity='.25'/%3E%3Cpolygon points='980,0 1220,1080 1500,1080' fill='url(%23beam)' opacity='.25'/%3E%3Crect x='520' y='110' width='880' height='6' rx='3' fill='%23FFE3A3'/%3E%3Crect x='0' y='660' width='1920' height='420' fill='url(%23seats)' opacity='.55'/%3E%3Crect x='0' y='560' width='1920' height='140' fill='url(%23fadeIn)'/%3E%3C/svg%3E");
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    line-height:1.6;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  button,input,select{font-family:inherit}
+  img{max-width:100%;display:block}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+  .container{width:min(1100px,92%);margin:0 auto}
+
+  /* Applied Oswald for visual hierarchy */
+  h1, h2, h3, h4, .brand-name, .logo, .eyebrow {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+  }
+
+  /* Header */
+  .header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,12,10,.7);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{position:relative;display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{
+    width:46px;height:46px;border-radius:14px;
+    background:linear-gradient(135deg,var(--gold),var(--coral));
+    display:grid;place-items:center;font-weight:800;color:#1a1204;letter-spacing:1px;
+    box-shadow:0 8px 24px -10px rgba(245,185,66,.7);
+  }
+  .brand-name{font-weight:800;letter-spacing:3px;font-size:18px;line-height:1.1}
+  .brand-name span{color:var(--gold)}
+  .brand-sub{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase; font-family: 'Inter', sans-serif;}
+  .links{display:flex;align-items:center}
+  .links a{margin-left:26px;font-size:14px;color:var(--muted);transition:color .2s}
+  .links a:hover{color:var(--gold)}
+  .menu-btn{display:none;background:none;border:0;color:var(--text);font-size:26px;cursor:pointer}
+
+  /* Shared */
+  .eyebrow{font-size:12px;letter-spacing:4px;color:var(--gold);font-weight:600}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 26px;font-size:15px;font-weight:600;
+    border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;
+    /* Applied purposeful tech styling (4px radius, Oswald font) */
+    border-radius: 4px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--coral));color:#1a1204;box-shadow:0 10px 30px -12px rgba(232,85,61,.8)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:rgba(14,12,10,.45);color:var(--text);border:1px solid rgba(255,255,255,.3);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .full{width:100%}
+
+  /* Hero */
+  .hero{position:relative;z-index:1;padding:80px 0 56px}
+  .hero h1{font-size:clamp(40px,7vw,70px);font-weight:800;line-height:1.05;margin:16px 0;text-shadow:0 4px 30px rgba(0,0,0,.5)}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .lead{color:var(--muted);max-width:540px;font-size:16px;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+  
+  /* Contextual Glass Cards */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+  .stat{
+    background: rgba(255, 255, 255, 0.03); /* rgba backgrounds */
+    -webkit-backdrop-filter: blur(12px); /* blur filter */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .stat:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+  }
+  .stat h3 {
+    font-size: 20px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .stat b {
+    display: inline-block;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: 'Oswald', sans-serif;
+  }
+  .stat small {
+    color: var(--muted);
+    font-size: 14px;
+    margin-left: 4px;
+    font-family: 'Inter', sans-serif;
+    text-transform: none;
+  }
+  .stat p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Movies */
+  .section{position:relative;z-index:1;padding:64px 0}
+  .section-head h2{font-size:clamp(28px,4.5vw,42px);font-weight:800;line-height:1.15;margin:6px 0 8px;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+  .section-head h2 span{color:var(--gold)}
+  .section-head p:not(.eyebrow){color:var(--muted);text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  .stage{
+    position:relative;margin-top:34px;overflow:hidden;border-radius:28px;
+    background:var(--glass-strong);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+    border:1px solid var(--line);
+  }
+  .slides{display:grid}
+  .slide{grid-area:1/1;opacity:0;visibility:hidden}
+  .slide.active{visibility:visible;opacity:1;animation:slideInLeft .75s cubic-bezier(.22,.8,.3,1) both}
+  .slide.leaving{visibility:visible;opacity:1;animation:slideOutRight .6s ease-in both}
+  .slide.active .poster{animation:posterIn .6s .15s both}
+  .slide.active .fx{animation:fadeUp .6s var(--d,0s) both}
+  .slide-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:34px;align-items:center;padding:32px}
+  .poster{
+    position:relative;width:100%;max-width:280px;aspect-ratio:2/3;border-radius:18px;overflow:hidden;
+    background:linear-gradient(160deg,var(--c1),var(--c2));box-shadow:var(--shadow);justify-self:center;
+  }
+  .poster-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center}
+  .poster-fallback span{font-size:clamp(20px,3vw,28px);font-weight:800;line-height:1.2;text-shadow:0 4px 20px rgba(0,0,0,.5); font-family: 'Oswald', sans-serif; text-transform: uppercase;}
+  .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .poster-tag{
+    position:absolute;top:14px;left:14px;background:rgba(0,0,0,.6);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    padding:6px 10px;border-radius:4px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);
+    font-family: 'Oswald', sans-serif;
+  }
+  .info h3{font-size:clamp(26px,3.4vw,36px);font-weight:800;line-height:1.15;margin:6px 0 4px; text-transform: uppercase;}
+  .genre{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:600}
+  .meta{color:var(--gold-soft);font-size:14px;margin-bottom:10px}
+  .desc{color:var(--muted);font-size:15px;margin-bottom:20px}
+  .label{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  .times{display:flex;flex-wrap:wrap;gap:10px}
+  .time-chip{
+    display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+    background:rgba(36,31,26,.85);border:1px solid rgba(255,255,255,.12);color:var(--text);
+    padding:10px 14px;border-radius:4px; /* Tech interface radius */
+    cursor:pointer;transition:border-color .2s,transform .2s;
+  }
+  .time-chip b{font-size:15px;font-weight:600}
+  .time-chip small{font-size:11px;color:var(--muted)}
+  .time-chip:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .time-chip.unlocked{border-color:rgba(245,185,66,.6)}
+  .time-chip.unlocked small{color:var(--gold)}
+  .actions{margin-top:24px}
+  .controls{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:22px}
+  .arrows{display:flex;gap:10px}
+  .arrows button{
+    width:44px;height:44px;border-radius:4px;border:1px solid var(--line);
+    background:var(--glass);color:var(--text);font-size:18px;cursor:pointer;transition:border-color .2s,color .2s;
+  }
+  .arrows button:hover{border-color:var(--gold);color:var(--gold)}
+  .dots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .dot{width:10px;height:10px;border-radius:4px;border:0;background:rgba(255,255,255,.3);cursor:pointer;transition:width .3s,background .3s}
+  .dot.on{width:28px;background:var(--gold)}
+  .progress{height:3px;border-radius:3px;margin-top:18px;background:rgba(255,255,255,.12);overflow:hidden}
+  .bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--coral))}
+  .note{color:var(--muted);font-size:12px;margin-top:16px;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+  /* Footer */
+  .footer{position:relative;z-index:1;margin-top:20px;background:rgba(14,12,10,.75);border-top:1px solid var(--line);padding:48px 0 24px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+  .footer h4{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .footer p,.footer li{color:var(--muted);font-size:14px;list-style:none;margin-bottom:6px}
+  .footer ul a:hover{color:var(--gold)}
+  .copy-line{margin-top:32px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px;text-align:center}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.72)}
+  .modal.open{display:flex;animation:fadeIn .25s ease both}
+  .modal-card{
+    position:relative;width:min(480px,100%);max-height:92vh;overflow:auto;
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px;
+  }
+  .close{position:absolute;top:14px;right:14px;background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}
+  .close:hover{color:var(--gold)}
+  .modal h3{font-size:22px;font-weight:800;margin-bottom:4px; text-transform: uppercase;}
+  .muted{color:var(--muted);font-size:13px;margin-bottom:18px}
+  form label{display:block;font-size:13px;color:var(--muted);margin-bottom:12px}
+  input,select{
+    display:block;width:100%;margin-top:6px;padding:12px 14px;border-radius:4px; /* Tech interface radius */
+    border:1px solid rgba(255,255,255,.12);background:var(--bg);color:var(--text);font-size:15px;
+  }
+  input:focus,select:focus{outline:none;border-color:var(--gold)}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pay{background:var(--bg);border:1px dashed var(--line);border-radius:4px;padding:14px;margin:6px 0 14px}
+  .pay p{font-size:14px;margin-bottom:8px}
+  .pay b{color:var(--gold)}
+  .copy{margin-left:8px;background:none;border:1px solid var(--line);color:var(--gold);padding:4px 10px;border-radius:4px;font-size:12px;cursor:pointer}
+  .error{color:var(--coral);font-size:13px;min-height:18px;margin-bottom:8px}
+  .success{text-align:center;padding:10px 0}
+  .success .tick{font-size:48px;color:var(--gold)}
+  .success p{color:var(--muted);margin:10px 0 18px;font-size:14px}
+
+  /* Animations */
+  @keyframes slideInLeft{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+  @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @keyframes posterIn{from{opacity:0;transform:translateX(-40px) scale(.96)}to{opacity:1;transform:none}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes fill{from{width:0}to{width:100%}}
+
+  /* Responsive */
+  @media (max-width:760px){
+    .menu-btn{display:block}
+    .links{
+      display:none;position:absolute;top:72px;right:0;flex-direction:column;align-items:flex-start;
+      min-width:160px;padding:10px 20px;background:var(--surface);border:1px solid var(--line);border-radius:4px;
+    }
+    .links.open{display:flex}
+    .links a{margin:10px 0}
+    .hero{padding:56px 0 40px}
+    /* Changed grid to stack contextual cards neatly on mobile */
+    .stats{grid-template-columns:1fr;gap:16px}
+    .stat{padding:20px}
+    .slide-inner{grid-template-columns:1fr;padding:22px;gap:22px}
+    .poster{max-width:200px}
+    .row{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="#home" class="brand">
+      <div class="logo">2B</div>
+      <div>
+        <div class="brand-name">ZONE<span>.</span></div>
+        <div class="brand-sub">Gaming Cafe</div>
+      </div>
+    </a>
+    <nav class="links" id="links">
+      <a href="#home">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#movies">Tickets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container">
+      <p class="eyebrow">Your entertainment zone</p>
+      <h1>Big Screen.<br /><em>Bigger Vibes.</em></h1>
+      <p class="lead">Your favourite movies, your crew, and unforgettable nights. Welcome to a new kind of entertainment at 2B Zone.</p>
+      <div class="hero-actions">
+        <a href="#movies" class="btn btn-primary">Explore Movies →</a>
+        <a href="#movies" class="btn btn-ghost">Choose a showtime</a>
+      </div>
+      
+      <!-- Contextual UI Cards replacing the floating numbers -->
+      <div class="stats">
+        <div class="stat">
+          <h3>Standard Pass</h3>
+          <div><b>₹99</b><small>/ person</small></div>
+          <p>Base price to access any standard movie screening or open gaming setup.</p>
+        </div>
+        <div class="stat">
+          <h3>Show Unlock</h3>
+          <div><b>5</b><small>tickets</small></div>
+          <p>Minimum paid reservations required to unlock and confirm a showtime.</p>
+        </div>
+        <div class="stat">
+          <h3>Max Capacity</h3>
+          <div><b>30</b><small>seats</small></div>
+          <p>Intimate private theater experience for you and your dedicated crew.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="movies">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Now &amp; upcoming</p>
+        <h2>Pick your <span>movie</span>.</h2>
+        <p>Movies rotate automatically. Hover to pause or swipe on mobile. Tap a showtime to book.</p>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="slides" id="slides"></div>
+      </div>
+
+      <div class="progress"><div class="bar" id="bar"></div></div>
+
+      <div class="controls">
+        <div class="arrows">
+          <button id="prevBtn" aria-label="Previous movie">←</button>
+          <button id="nextBtn" aria-label="Next movie">→</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+
+      <p class="note">Showtimes and seat counts are demo data until this site is connected to your live booking server.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>2B Zone</h4>
+        <p>Gaming cafe and cinema experience. Big screen, bigger vibes, and nights you will remember.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#movies">Movies</a></li>
+          <li><a href="#movies">Book tickets</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>[your address]</p>
+        <p>[your phone]</p>
+        <p>[your email]</p>
+      </div>
+    </div>
+    <p class="copy-line">© 2026 2B Zone. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button class="close" id="closeModal" aria-label="Close">✕</button>
+
+    <div id="bookingView">
+      <h3 id="modalTitle">Book your tickets</h3>
+      <p class="muted">₹99 per ticket. Pay via UPI, then enter your payment reference. A show unlocks after 5 paid tickets.</p>
+
+      <form id="bookingForm" novalidate>
+        <label>Movie
+          <select id="fMovie"></select>
+        </label>
+        <label>Show time
+          <select id="fTime"></select>
+        </label>
+        <div class="row">
+          <label>Date
+            <input type="date" id="fDate" required />
+          </label>
+          <label>Tickets
+            <input type="number" id="fQty" min="1" max="30" value="1" required />
+          </label>
+        </div>
+        <label>Your name
+          <input type="text" id="fName" required />
+        </label>
+        <label>Mobile number
+          <input type="tel" id="fPhone" inputmode="numeric" maxlength="10" required />
+        </label>
+
+        <div class="pay">
+          <p>Total: <b id="fTotal">₹99</b></p>
+          <p>Pay to UPI ID: <b id="upiId"></b><button type="button" class="copy" id="copyUpi">Copy</button></p>
+          <label style="margin:0">UPI payment reference / UTR
+            <input type="text" id="fRef" required />
+          </label </label>
+        </div>
+
+        <p class="error" id="fError"></p>
+        <button class="btn btn-primary full" type="submit">I have paid · Confirm booking</button>
+      </form>
+    </div>
+
+    <div class="success" id="successView" hidden>
+      <div class="tick">✓</div>
+      <h3>Booking received</h3>
+      <p id="successText"></p>
+      <button class="btn btn-ghost full" id="doneBtn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================== SETTINGS ================== */
+const SLIDE_MS     = 3500;          // how long each movie stays (3.5 seconds)
+const MAX_PER_SHOW = 30;            // max tickets per show
+const UNLOCK_AT    = 5;             // paid tickets needed to unlock a show
+const PRICE        = 99;            // ₹ per ticket
+const UPI_ID       = "2bzone@upi";  // TODO: replace with your real UPI ID
+
+/* ================== MOVIE DATA ==================
+   poster: image path or URL (e.g. "jailer2.jpg"). Empty = styled fallback.
+   times:  sold = tickets already booked for that show (demo values). */
+const movies = [
+  {
+    title: "Drishyam: The Conclusion",
+    tag: "Now Showing",
+    lang: "Hindi",
+    genre: "Crime · Thriller",
+    meta: "Ajay Devgn · Tabu · Jaideep Ahlawat",
+    desc: "Vijay Salgaonkar and his family come under pressure again as SP Rajveer Singh Tomar enters the story. The final chapter of the Hindi Drishyam franchise.",
+    c1: "#4a2f14", c2: "#b57a2a",
+    poster: "",
+    times: [{ t: "10:30 AM", sold: 12 }, { t: "2:15 PM", sold: 4 }, { t: "7:00 PM", sold: 22 }]
+  },
+  {
+    title: "Jailer 2",
+    tag: "Coming 15 Oct",
+    lang: "Tamil",
+    genre: "Action · Drama",
+    meta: "Rajinikanth",
+    desc: "Rajinikanth returns in the sequel to the hit film Jailer, scheduled for release on 15 October 2026.",
+    c1: "#3b1a10", c2: "#c2452c",
+    poster: "",
+    times: [{ t: "11:00 AM", sold: 0 }, { t: "3:30 PM", sold: 7 }, { t: "9:00 PM", sold: 18 }]
+  },
+  {
+    title: "Prahaar",
+    tag: "Coming 16 Oct",
+    lang: "Hindi",
+    genre: "Drama",
+    meta: "Rajkummar Rao · The Untold Story of Ujjwal Nikam",
+    desc: "Rajkummar Rao's Hindi film on the untold story of Ujjwal Nikam, releasing 16 October 2026.",
+    c1: "#1d2a1a", c2: "#6a8f3a",
+    poster: "",
+    times: [{ t: "12:00 PM", sold: 3 }, { t: "4:45 PM", sold: 9 }, { t: "8:15 PM", sold: 0 }]
+  },
+  {
+    title: "Ranabaali",
+    tag: "Coming 16 Oct",
+    lang: "Telugu",
+    genre: "Period Action Drama",
+    meta: "Vijay Deverakonda · Rashmika Mandanna",
+    desc: "A period action drama set in 1870s South India during the great famine, starring Vijay Deverakonda and Rashmika Mandanna.",
+    c1: "#14213a", c2: "#3c6fb5",
+    poster: "",
+    times: [{ t: "1:00 PM", sold: 6 }, { t: "5:30 PM", sold: 15 }, { t: "10:00 PM", sold: 1 }]
+  }
+];
+
+/* ================== ELEMENTS ================== */
+const $ = (id) => document.getElementById(id);
+const slidesEl = $("slides");
+const dotsEl   = $("dots");
+const bar      = $("bar");
+const stage    = $("stage");
+const modal    = $("modal");
+
+let current   = 0;
+let timer     = null;
+let hovering  = false;
+let modalOpen = false;
+let paused    = false;
+
+/* ================== HEADER MENU ================== */
+$("menuBtn").addEventListener("click", () => $("links").classList.toggle("open"));
+document.querySelectorAll("#links a").forEach((a) =>
+  a.addEventListener("click", () => $("links").classList.remove("open"))
+);
+
+/* ================== CAROUSEL: RENDERING ================== */
+function timesHTML(i) {
+  return movies[i].times.map((s, j) => {
+    const left = MAX_PER_SHOW - s.sold;
+    const need = Math.max(0, UNLOCK_AT - s.sold);
+    return `
+      <button class="time-chip ${need ? "" : "unlocked"}" data-movie="${i}" data-time="${j}">
+        <b>${s.t}</b>
+        <small>${left} seats left · ${need ? need + " more to unlock" : "Unlocked ✓"}</small>
+      </button>`;
+  }).join("");
+}
+
+function slideHTML(m, i) {
+  return `
+    <article class="slide" data-i="${i}">
+      <div class="slide-inner">
+        <div class="poster" style="--c1:${m.c1};--c2:${m.c2}">
+          <div class="poster-fallback"><span>${m.title}</span></div>
+          ${m.poster ? `<img src="${m.poster}" alt="${m.title} poster" onerror="this.remove()" />` : ""}
+          <span class="poster-tag">${m.tag}</span>
+        </div>
+        <div class="info">
+          <p class="genre fx" style="--d:.2s">${m.lang} · ${m.genre}</p>
+          <h3 class="fx" style="--d:.25s">${m.title}</h3>
+          <p class="meta fx" style="--d:.3s">${m.meta}</p>
+          <p class="desc fx" style="--d:.35s">${m.desc}</p>
+          <p class="label fx" style="--d:.4s">Show timings</p>
+          <div class="times fx" style="--d:.45s">${timesHTML(i)}</div>
+          <div class="actions fx" style="--d:.6s">
+            <button class="btn btn-primary" data-book="${i}">Book the ticket →</button>
+          </div>
+        </div>
+      </div>
+    </article>`;
+}
+
+function build() {
+  slidesEl.innerHTML = movies.map((m, i) => slideHTML(m, i)).join("");
+  dotsEl.innerHTML = movies.map((m, i) =>
+    `<button class="dot" data-i="${i}" aria-label="Show ${m.title}"></button>`
+  ).join("");
+}
+
+function renderTimes(i) {
+  document.querySelector(`.slide[data-i="${i}"] .times`).innerHTML = timesHTML(i);
+}
+
+/* ================== CAROUSEL: ANIMATION ================== */
+// New movie slides in from the LEFT, the old one exits to the RIGHT
+function activate(n) {
+  const slides = slidesEl.querySelectorAll(".slide");
+  if (slides[current]) slides[current].classList.replace("active", "leaving");
+
+  current = (n + movies.length) % movies.length;
+  const next = slides[current];
+  next.classList.remove("leaving", "active");
+  void next.offsetWidth;   // restart the CSS animation
+  next.classList.add("active");
+
+  dotsEl.querySelectorAll(".dot").forEach((d, k) => d.classList.toggle("on", k === current));
+  restartProgress();
+}
+
+function restartProgress() {
+  bar.style.animation = "none";
+  void bar.offsetWidth;
+  bar.style.animation = `fill ${SLIDE_MS}ms linear forwards`;
+  bar.style.animationPlayState = paused ? "paused" : "running";
+}
+
+function schedule() {
+  clearTimeout(timer);
+  if (paused) return;
+  timer = setTimeout(() => {
+    activate(current + 1);
+    schedule();
+  }, SLIDE_MS);
+}
+
+function go(n) {
+  activate(n);
+  schedule();
+}
+
+// Pause while hovering or while the booking modal is open
+function syncPlay() {
+  const shouldPause = hovering || modalOpen;
+  if (shouldPause) {
+    paused = true;
+    clearTimeout(timer);
+    bar.style.animationPlayState = "paused";
+  } else if (paused) {
+    paused = false;
+    restartProgress();
+    schedule();
+  }
+}
+
+// Remove the "leaving" class once the exit animation finishes
+slidesEl.addEventListener("animationend", (e) => {
+  if (e.target.classList.contains("leaving")) e.target.classList.remove("leaving");
+});
+
+/* ================== CAROUSEL: CONTROLS ================== */
+$("prevBtn").addEventListener("click", () => go(current - 1));
+$("nextBtn").addEventListener("click", () => go(current + 1));
+
+dotsEl.addEventListener("click", (e) => {
+  const d = e.target.closest(".dot");
+  if (d) go(+d.dataset.i);
+});
+
+stage.addEventListener("mouseenter", () => { hovering = true; syncPlay(); });
+stage.addEventListener("mouseleave", () => { hovering = false; syncPlay(); });
+
+// Swipe support (mobile)
+let touchX = null;
+stage.addEventListener("touchstart", (e) => {
+  touchX = e.touches[0].clientX;
+  hovering = true;
+  syncPlay();
+}, { passive: true });
+
+stage.addEventListener("touchend", (e) => {
+  if (touchX !== null) {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? current + 1 : current - 1);
+  }
+  touchX = null;
+  hovering = false;
+  syncPlay();
+});
+
+// Showtime chip and "Book the ticket" clicks
+slidesEl.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-time]");
+  if (t) { openModal(+t.dataset.movie, +t.dataset.time); return; }
+  const b = e.target.closest("[data-book]");
+  if (b) openModal(+b.dataset.book, 0);
+});
+
+/* ================== BOOKING MODAL ================== */
+const bookingView = $("bookingView");
+const successView = $("successView");
+const fMovie = $("fMovie");
+const fTime  = $("fTime");
+const fDate  = $("fDate");
+const fQty   = $("fQty");
+const fName  = $("fName");
+const fPhone = $("fPhone");
+const fRef   = $("fRef");
+const fError = $("fError");
+const fTotal = $("fTotal");
+
+$("upiId").textContent = UPI_ID;
+
+function todayISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+function fillTimes(movieIdx, selected = 0) {
+  fTime.innerHTML = movies[movieIdx].times.map((s, j) =>
+    `<option value="${j}">${s.t} (${MAX_PER_SHOW - s.sold} seats left)</option>`
+  ).join("");
+  fTime.value = selected;
+}
+
+function updateTotal() {
+  fTotal.textContent = "₹" + PRICE * (parseInt(fQty.value, 10) || 0);
+}
+
+function openModal(movieIdx, timeIdx) {
+  fMovie.innerHTML = movies.map((m, i) => `<option value="${i}">${m.title}</option>`).join("");
+  fMovie.value = movieIdx;
+  fillTimes(movieIdx, timeIdx ?? 0);
+  fDate.min = todayISO();
+  if (!fDate.value) fDate.value = todayISO();
+  fQty.value = 1;
+  updateTotal();
+  fError.textContent = "";
+  bookingView.hidden = false;
+  successView.hidden = true;
+  modal.classList.add("open");
+  modalOpen = true;
+  syncPlay();
+}
+
+function closeModal() {
+  modal.classList.remove("open");
+  modalOpen = false;
+  syncPlay();
+}
+
+fMovie.addEventListener("change", () => {
+  fillTimes(+fMovie.value);
+  updateTotal();
+});
+fQty.addEventListener("input", updateTotal);
+$("closeModal").addEventListener("click", closeModal);
+$("doneBtn").addEventListener("click", closeModal);
+modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
+});
+
+$("copyUpi").addEventListener("click", async (e) => {
+  try {
+    await navigator.clipboard.writeText(UPI_ID);
+    e.target.textContent = "Copied!";
+    setTimeout(() => (e.target.textContent = "Copy"), 1500);
+  } catch {
+    alert("UPI ID: " + UPI_ID);
+  }
+});
+
+$("bookingForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const i = +fMovie.value;
+  const j = +fTime.value;
+  const qty = parseInt(fQty.value, 10);
+  const show = movies[i].times[j];
+  const seatsLeft = MAX_PER_SHOW - show.sold;
+  const name = fName.value.trim();
+  const phone = fPhone.value.trim();
+  const ref = fRef.value.trim();
+
+  let err = "";
+  if (!fDate.value) err = "Please choose a date.";
+  else if (!name) err = "Please enter your name.";
+  else if (!/^[6-9]\d{9}$/.test(phone)) err = "Enter a valid 10-digit mobile number.";
+  else if (!qty || qty < 1) err = "Tickets must be at least 1.";
+  else if (qty > seatsLeft) err = `Only ${seatsLeft} seats left for this show.`;
+  else if (!ref) err = "Please enter the UPI reference number.";
+
+  if (err) {
+    fError.textContent = err;
+    return;
+  }
+
+  // Demo only: in a real site, send this to your server or sheet and verify the payment there.
+  show.sold += qty;
+  renderTimes(i);
+
+  $("successText").textContent =
+    `${qty} ticket(s) for ${movies[i].title} at ${show.t} on ${fDate.value}. ` +
+    `Total ₹${qty * PRICE}. We will verify your payment (ref: ${ref}) and confirm your seats. ` +
+    `The show is unlocked after ${UNLOCK_AT} paid tickets.`;
+
+  bookingView.hidden = true;
+  successView.hidden = false;
+});
+
+/* ================== INIT ================== */
+build();
+activate(0);
+schedule();
+</script>
+</body></html>
