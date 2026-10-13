@@ -1,0 +1,179 @@
+/* =========================================================
+   2B ZONE: style.css
+   Path: css/style.css
+   ========================================================= */
+
+/* ---------- Theme variables ---------- */
+:root{
+  --bg:#0E0C0A;
+  --surface:#1A1714;
+  --surface-2:#241F1A;
+  --line:rgba(245,185,66,.22);
+  --gold:#F5B942;
+  --gold-soft:#FFD98A;
+  --coral:#E8553D;
+  --text:#F5EFE6;
+  --muted:#B8AE9F;
+  --glass:rgba(22,19,16,.62);
+  --glass-strong:rgba(20,17,14,.82);
+  --radius:20px;
+  --shadow:0 20px 50px -20px rgba(0,0,0,.9);
+}
+
+/* ---------- Base ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body{
+  font-family:'Poppins',system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--text);
+  background-color:var(--bg);
+  background-image:
+    linear-gradient(180deg,rgba(14,12,10,.25) 0%,rgba(14,12,10,.6) 45%,rgba(14,12,10,.92) 100%),
+    url('../images/cinema-bg.svg');
+  background-size:cover;
+  background-position:center top;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  line-height:1.6;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none}
+button,input,select{font-family:inherit}
+img{max-width:100%;display:block}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+.container{width:min(1100px,92%);margin:0 auto}
+
+/* ---------- Header ---------- */
+.header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(14,12,10,.7);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  position:relative;
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:46px;height:46px;border-radius:14px;
+  background:linear-gradient(135deg,var(--gold),var(--coral));
+  display:grid;place-items:center;
+  font-weight:800;color:#1a1204;letter-spacing:1px;
+  box-shadow:0 8px 24px -10px rgba(245,185,66,.7);
+}
+.brand-name{font-weight:800;letter-spacing:3px;font-size:18px;line-height:1.1}
+.brand-name span{color:var(--gold)}
+.brand-sub{font-size:10px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+
+.links{display:flex;align-items:center}
+.links a{
+  margin-left:26px;font-size:14px;color:var(--muted);
+  transition:color .2s;
+}
+.links a:hover{color:var(--gold)}
+
+.menu-btn{
+  display:none;background:none;border:0;
+  color:var(--text);font-size:26px;cursor:pointer;
+}
+
+/* ---------- Eyebrow & buttons ---------- */
+.eyebrow{
+  font-size:12px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--gold);font-weight:600;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 26px;border-radius:999px;
+  font-size:15px;font-weight:600;
+  border:0;cursor:pointer;
+  transition:transform .2s,box-shadow .2s,border-color .2s,color .2s;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--coral));
+  color:#1a1204;
+  box-shadow:0 10px 30px -12px rgba(232,85,61,.8);
+}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{
+  background:rgba(14,12,10,.45);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter:blur(6px);
+  backdrop-filter:blur(6px);
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.full{width:100%}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;z-index:1;padding:80px 0 56px}
+.hero h1{
+  font-size:clamp(40px,7vw,70px);
+  font-weight:800;line-height:1.05;
+  margin:16px 0;
+  text-shadow:0 4px 30px rgba(0,0,0,.5);
+}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.lead{
+  color:var(--muted);max-width:540px;font-size:16px;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:14px;margin-top:48px;
+}
+.stat{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+}
+.stat b{display:block;font-size:26px;color:var(--gold);line-height:1.2}
+.stat small{color:var(--muted);font-size:13px}
+
+/* ---------- Movies section ---------- */
+.section{position:relative;z-index:1;padding:64px 0}
+.section-head h2{
+  font-size:clamp(28px,4.5vw,42px);
+  font-weight:800;line-height:1.15;
+  margin:6px 0 8px;
+  text-shadow:0 4px 24px rgba(0,0,0,.6);
+}
+.section-head h2 span{color:var(--gold)}
+.section-head p:not(.eyebrow){
+  color:var(--muted);
+  text-shadow:0 2px 10px rgba(0,0,0,.6);
+}
+
+.stage{
+  position:relative;margin-top:34px;overflow:hidden;
+  border-radius:28px;
+  background:var(--glass-strong);
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+  border:1px solid var(--line);
+}
+.slides{display:grid}
+
+/* All slides share one grid cell, so the stage height equals the tallest slide */
+.slide{grid-area:1/1;opacity:0;visibility:hidden}
+.slide.active{
+  visibility:visible;opacity:1;
+  animation:slideInLeft .75s cubic-bezier(.22,.8,.3,1) both;
+}
+.slide.leaving{
+  visibility:visible;opacity:1;
+  animation:slideOutRight .6s ease-
