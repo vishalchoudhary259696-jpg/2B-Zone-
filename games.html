@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games | 2B Zone</title>
+<meta name="description" content="Gaming setups and prices at 2B Zone. PS5, PS4, Xbox, Gaming PC and popular games.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E9E3D3; --ink:#192120; --cream:#F1EADB; --orange:#F0561E;
+    --muted:#5C5D51; --perf:#5E6963;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit}
+  .wrap{max-width:720px;margin:0 auto;padding:22px 22px 0}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0ms)}
+  .reveal.in{opacity:1;transform:none}
+
+  .brand{display:flex;align-items:center;gap:14px;margin-bottom:44px;text-decoration:none}
+  .logo{width:56px;height:56px;flex:0 0 56px;border-radius:10px;background:var(--ink);color:var(--cream);display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:900;font-size:19px}
+  .brand-name{font-family:'Unbounded',sans-serif;font-weight:800;font-size:21px}
+  .brand-sub{color:var(--muted);font-size:15px;margin-top:2px}
+
+  .hero h1{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(36px,10vw,50px);line-height:1.12;letter-spacing:-.02em;margin-bottom:24px}
+  .hero p{font-size:19px;line-height:1.6;color:#2A2F2D;margin-bottom:30px}
+  .hero-actions{display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:540px;border:2px solid transparent;border-radius:8px;padding:18px 28px;font:600 19px 'Outfit',sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-orange{background:var(--orange);color:#fff}
+  .btn-dark{background:var(--ink);color:var(--cream)}
+  .btn-outline{background:transparent;color:var(--ink);border-color:var(--ink);max-width:470px}
+
+  .section{margin-top:70px}
+  .section h2{font-family:'Unbounded',sans-serif;font-weight:900;font-size:clamp(28px,8vw,40px);line-height:1.15;margin-bottom:12px}
+  .lead{color:var(--muted);font-size:19px;line-height:1.5;margin-bottom:24px}
+
+  .price-card{background:var(--ink);color:var(--cream);border-radius:16px;overflow:hidden;padding-bottom:18px}
+  .price-row{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:8px;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(241,234,219,.12);font-size:16px}
+  .price-head{color:#AEB5AE;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+  .price-row span:not(:first-child){text-align:center}
+  .setup-name{font-weight:600}
+  .val{color:var(--orange);font-weight:600}
+  .price-note{padding:16px 20px 0;font-size:16px;color:#E6DFCD}
+  .price-note strong{color:var(--orange)}
+
+  .games{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .game{text-align:center}
+  .game-poster{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;background:var(--ink)}
+  .game-poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .game-poster .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:'Unbounded',sans-serif;font-weight:900;font-size:40px;color:var(--orange)}
+  .game-name{margin-top:10px;font-family:'Unbounded',sans-serif;font-weight:800;font-size:14px}
+
+  .footer{margin-top:50px;border-top:2px solid var(--ink);padding:26px 22px 40px;text-align:center}
+  .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 22px;margin-bottom:18px}
+  .footer-links a{font-size:16px;text-decoration:none}
+  .footer small{display:block;color:var(--muted);font-size:14px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <a class="brand" href="index.html">
+    <div class="logo">2B</div>
+    <div>
+      <div class="brand-name">Zone</div>
+      <div class="brand-sub">Gaming cafe and cinema</div>
+    </div>
+  </a>
+
+  <section class="hero reveal">
+    <h1>Play. Watch. Repeat.</h1>
+    <p>Premium PC and console setups, with the best games for every session.</p>
+    <div class="hero-actions">
+      <a class="btn btn-orange" href="#prices">Gaming Price List</a>
+      <a class="btn btn-outline" href="index.html">Back to Movies</a>
+    </div>
+  </section>
+
+  <section class="section reveal" id="prices">
+    <h2>Gaming Price List</h2>
+    <p class="lead">Choose your setup and session length.</p>
+    <div class="price-card">
+      <div class="price-row price-head">
+        <span>Gaming Setup</span>
+        <span>30 Minutes</span>
+        <span>1 Hour</span>
+      </div>
+      <div id="priceRows"></div>
+      <div class="price-note"><strong>Multiplayer:</strong> +₹50 per extra player</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>These Games Are Available</h2>
+    <p class="lead">Popular titles ready to play at 2B Zone.</p>
+    <div class="games" id="games"></div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Reserve a setup</h2>
+    <p class="lead">Message us on WhatsApp or call to book your console or PC.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="https://wa.me/919876543210" target="_blank" rel="noopener">Reserve on WhatsApp</a>
+      <a class="btn btn-outline" href="tel:+919876543210">Call +91 98765 43210</a>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Refund Policy</a>
+    <a href="#">Contact</a>
+  </div>
+  <small>© 2026 2B Zone Private Limited. All rights reserved.</small>
+  <small>Gaming cafe and cinema</small>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ===== SETTINGS: prices from the price list ===== */
+  var SETUPS = [
+    { name: 'PS5',            thirtyMin: 140, oneHour: 200 },
+    { name: 'PS4',            thirtyMin: 100, oneHour: 150 },
+    { name: 'Xbox',           thirtyMin: 70,  oneHour: 100 },
+    { name: 'Gaming PC',      thirtyMin: 100, oneHour: 150 },
+    { name: 'Basic Steering', thirtyMin: 70,  oneHour: 100 }
+  ];
+
+  /* ===== POPULAR GAMES: paste poster URLs in poster ===== */
+  var GAMES = [
+    { title: 'BGMI',         poster: '' },
+    { title: 'PUBG',         poster: '' },
+    { title: 'Call of Duty', poster: '' },
+    { title: 'Free Fire',    poster: '' }
+  ];
+
+  /* ===== PRICE ROWS ===== */
+  document.getElementById('priceRows').innerHTML = SETUPS.map(function (s, i) {
+    return '' +
+      '<div class="price-row reveal" style="--d:' + (i * 80) + 'ms">' +
+        '<span class="setup-name">' + s.name + '</span>' +
+        '<span class="val">₹' + s.thirtyMin + '</span>' +
+        '<span class="val">₹' + s.oneHour + '</span>' +
+      '</div>';
+  }).join('');
+
+  /* ===== GAME CARDS ===== */
+  document.getElementById('games').innerHTML = GAMES.map(function (g, i) {
+    var img = g.poster
+      ? '<img src="' + g.poster + '" alt="' + g.title + ' poster" loading="lazy" onerror="this.remove()">'
+      : '';
+    return '' +
+      '<article class="game reveal" style="--d:' + (i * 100) + 'ms">' +
+        '<div class="game-poster"><span class="ph">' + g.title.charAt(0) + '</span>' + img + '</div>' +
+        '<h3 class="game-name">' + g.title + '</h3>' +
+      '</article>';
+  }).join('');
+
+  /* ===== SCROLL REVEAL ===== */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { observer.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
